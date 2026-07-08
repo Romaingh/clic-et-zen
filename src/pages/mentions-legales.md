@@ -51,4 +51,4 @@ L'éditeur s'efforce de fournir sur le site des informations aussi précises que
 
 ---
 
-[← Retourner à la page d'accueil](/)
+[← Retourner à la page d'accueil](../)

@@ -1,11 +1,13 @@
 ---
 // src/components/Header.astro
 const pathname = Astro.url.pathname;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
+
 const isCurrent = (path: string) => {
-	if (path === '/') {
-		return pathname === '/' || pathname === '/index.html';
-	}
-	return pathname.replace(/\/$/, '') === path.replace(/\/$/, '');
+	const relativePath = pathname.replace(import.meta.env.BASE_URL, '');
+	const normalizedRelative = relativePath.replace(/\/$/, '') || '/';
+	const normalizedPath = path.replace(/\/$/, '') || '/';
+	return normalizedRelative === normalizedPath;
 };
 ---
 
@@ -13,9 +15,9 @@ const isCurrent = (path: string) => {
 	<div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
 		
 		<!-- Logo -->
-		<a href="/" class="flex items-center gap-2 group focus:outline-none focus:ring-2 focus:ring-clic-medium rounded-lg px-2 py-1 -ml-2">
+		<a href={base} class="flex items-center gap-2 group focus:outline-none focus:ring-2 focus:ring-clic-medium rounded-lg px-2 py-1 -ml-2">
 			<!-- Mini Logo Planet -->
-			<img src="/images/logo_mini.png" alt="Clic & Zen Logo" class="w-7 h-7 object-contain group-hover:scale-110 transition duration-300 select-none pointer-events-none" />
+			<img src={base + "images/logo_mini.png"} alt="Clic & Zen Logo" class="w-7 h-7 object-contain group-hover:scale-110 transition duration-300 select-none pointer-events-none" />
 			<span class="font-display text-xl sm:text-2xl font-extrabold tracking-tight">
 				Clic<span class="text-amber-400 group-hover:text-white transition duration-300">&</span>Zen
 			</span>
@@ -23,23 +25,23 @@ const isCurrent = (path: string) => {
 		
 		<!-- Desktop Nav -->
 		<nav class="hidden md:flex items-center gap-6 lg:gap-8 font-semibold text-sm lg:text-base">
-			<a href="/" class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
+			<a href={base} class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
 				Accueil
 				{isCurrent('/') && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-clic-medium rounded-full"></span>}
 			</a>
-			<a href="/particuliers" class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/particuliers') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
+			<a href={base + "particuliers"} class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/particuliers') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
 				Particuliers
 				{isCurrent('/particuliers') && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-clic-medium rounded-full"></span>}
 			</a>
-			<a href="/professionnels" class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/professionnels') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
+			<a href={base + "professionnels"} class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/professionnels') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
 				Professionnels
 				{isCurrent('/professionnels') && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-clic-medium rounded-full"></span>}
 			</a>
-			<a href="/tarifs" class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/tarifs') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
+			<a href={base + "tarifs"} class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/tarifs') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
 				Tarifs
 				{isCurrent('/tarifs') && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-clic-medium rounded-full"></span>}
 			</a>
-			<a href="/faq" class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/faq') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
+			<a href={base + "faq"} class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/faq') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
 				FAQ
 				{isCurrent('/faq') && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-clic-medium rounded-full"></span>}
 			</a>
@@ -75,19 +77,19 @@ const isCurrent = (path: string) => {
 	<!-- Mobile Menu Panel (Hidden by default) -->
 	<div id="mobile-menu" class="hidden md:hidden border-t border-clic-medium/10 bg-clic-dark/98 backdrop-blur-md">
 		<nav class="flex flex-col px-4 pt-2 pb-6 space-y-3 font-semibold text-base">
-			<a href="/" class={`px-3 py-2 rounded-lg transition ${isCurrent('/') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
+			<a href={base} class={`px-3 py-2 rounded-lg transition ${isCurrent('/') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
 				Accueil
 			</a>
-			<a href="/particuliers" class={`px-3 py-2 rounded-lg transition ${isCurrent('/particuliers') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
+			<a href={base + "particuliers"} class={`px-3 py-2 rounded-lg transition ${isCurrent('/particuliers') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
 				Particuliers
 			</a>
-			<a href="/professionnels" class={`px-3 py-2 rounded-lg transition ${isCurrent('/professionnels') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
+			<a href={base + "professionnels"} class={`px-3 py-2 rounded-lg transition ${isCurrent('/professionnels') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
 				Professionnels
 			</a>
-			<a href="/tarifs" class={`px-3 py-2 rounded-lg transition ${isCurrent('/tarifs') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
+			<a href={base + "tarifs"} class={`px-3 py-2 rounded-lg transition ${isCurrent('/tarifs') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
 				Tarifs
 			</a>
-			<a href="/faq" class={`px-3 py-2 rounded-lg transition ${isCurrent('/faq') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
+			<a href={base + "faq"} class={`px-3 py-2 rounded-lg transition ${isCurrent('/faq') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
 				FAQ
 			</a>
 		</nav>

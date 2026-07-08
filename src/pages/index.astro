@@ -3,6 +3,7 @@
 import Layout from '../layouts/Layout.astro';
 
 const zones = "Interventions sur Paris (12-13/Ivry) et Sud Seine-et-Marne (Fontainebleau-Avon)";
+const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 ---
 
 <Layout 
@@ -35,10 +36,10 @@ const zones = "Interventions sur Paris (12-13/Ivry) et Sud Seine-et-Marne (Fonta
 					
 					<!-- Boutons d'Action -->
 					<div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-						<a href="/particuliers" class="w-full sm:w-auto bg-clic-dark hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-clic-dark/25 transition-all duration-300 hover:shadow-slate-800/35 transform hover:-translate-y-0.5 text-center text-base">
+						<a href={base + "particuliers"} class="w-full sm:w-auto bg-clic-dark hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-clic-dark/25 transition-all duration-300 hover:shadow-slate-800/35 transform hover:-translate-y-0.5 text-center text-base">
 							Pour les Particuliers
 						</a>
-						<a href="/professionnels" class="w-full sm:w-auto border-2 border-clic-dark/85 text-clic-dark hover:bg-clic-dark hover:text-white font-bold px-8 py-3.5 rounded-xl transition-all duration-300 transform hover:-translate-y-0.5 text-center text-base">
+						<a href={base + "professionnels"} class="w-full sm:w-auto border-2 border-clic-dark/85 text-clic-dark hover:bg-clic-dark hover:text-white font-bold px-8 py-3.5 rounded-xl transition-all duration-300 transform hover:-translate-y-0.5 text-center text-base">
 							Pour les Professionnels
 						</a>
 					</div>
@@ -56,7 +57,7 @@ const zones = "Interventions sur Paris (12-13/Ivry) et Sud Seine-et-Marne (Fonta
 				
 				<!-- Illustration SVG (Droite) -->
 				<div class="lg:col-span-5 flex justify-center transform hover:scale-103 transition duration-500">
-					<img src="/images/LogoClic&Zen.png" alt="Clic & Zen informatique" class="h-80 w-auto object-contain mb-4" />
+					<img src={base + "images/LogoClic&Zen.png"} alt="Clic & Zen informatique" class="h-80 w-auto object-contain mb-4" />
 				</div>
 				
 			</div>
@@ -86,9 +87,9 @@ const zones = "Interventions sur Paris (12-13/Ivry) et Sud Seine-et-Marne (Fonta
 					</p>
 				</div>
 				<div class="lg:col-span-4 flex flex-col items-center justify-center p-6 bg-white/10 rounded-2xl border border-white/10 backdrop-blur-sm">
-					<img src="/images/services_personne.png" alt="Services à la personne - 50% de crédit d'impôt" class="h-20 w-auto object-contain mb-4" />
+					<img src={base + "images/services_personne.png"} alt="Services à la personne - 50% de crédit d'impôt" class="h-20 w-auto object-contain mb-4" />
 					<div class="text-sm font-semibold tracking-wide text-slate-200 uppercase mb-4 text-center">Déduction Immédiate</div>
-					<a href="/particuliers#credit-impot" class="bg-white hover:bg-slate-100 text-clic-dark font-bold px-6 py-3 rounded-lg transition text-sm w-full text-center shadow-md">
+					<a href={base + "particuliers#credit-impot"} class="bg-white hover:bg-slate-100 text-clic-dark font-bold px-6 py-3 rounded-lg transition text-sm w-full text-center shadow-md">
 						Comment en bénéficier ?
 					</a>
 				</div>
@@ -135,7 +136,7 @@ const zones = "Interventions sur Paris (12-13/Ivry) et Sud Seine-et-Marne (Fonta
 					</div>
 					
 					<div class="pt-8">
-						<a href="/particuliers" class="group bg-clic-dark hover:bg-slate-800 text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-200 block text-center text-sm">
+						<a href={base + "particuliers"} class="group bg-clic-dark hover:bg-slate-800 text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-200 block text-center text-sm">
 							Consulter l'offre Particuliers <span class="inline-block transform group-hover:translate-x-1 transition-transform">→</span>
 						</a>
 					</div>
@@ -165,7 +166,7 @@ const zones = "Interventions sur Paris (12-13/Ivry) et Sud Seine-et-Marne (Fonta
 					</div>
 					
 					<div class="pt-8">
-						<a href="/professionnels" class="group border-2 border-clic-dark text-clic-dark hover:bg-clic-dark hover:text-white font-bold px-6 py-3 rounded-xl transition-all duration-200 block text-center text-sm">
+						<a href={base + "professionnels"} class="group border-2 border-clic-dark text-clic-dark hover:bg-clic-dark hover:text-white font-bold px-6 py-3 rounded-xl transition-all duration-200 block text-center text-sm">
 							Consulter l'offre Professionnels <span class="inline-block transform group-hover:translate-x-1 transition-transform">→</span>
 						</a>
 					</div>

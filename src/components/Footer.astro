@@ -1,6 +1,7 @@
 ---
 // src/components/Footer.astro
 const zones = "Paris 12e & 13e / Ivry-sur-Seine (+ villes alentours)  et Fontainebleau-Avon / Vulaines-sur-Seine (+ villes alentours)";
+const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 ---
 
 <footer class="bg-slate-900 text-slate-400 text-sm pt-12 pb-8 border-t border-slate-800">
@@ -10,7 +11,7 @@ const zones = "Paris 12e & 13e / Ivry-sur-Seine (+ villes alentours)  et Fontain
 		<div class="space-y-4">
 			<div class="flex items-center gap-2">
 				<!-- Mini Logo Planet -->
-				<img src="/images/logo_mini.png" alt="Clic & Zen Logo" class="w-6 h-6 object-contain select-none pointer-events-none" />
+				<img src={base + "images/logo_mini.png"} alt="Clic & Zen Logo" class="w-6 h-6 object-contain select-none pointer-events-none" />
 				<span class="font-display text-lg font-bold text-white tracking-tight">Clic<span class="text-amber-400">&</span>Zen</span>
 			</div>
 			<p class="text-slate-400 leading-relaxed text-sm">
@@ -26,11 +27,11 @@ const zones = "Paris 12e & 13e / Ivry-sur-Seine (+ villes alentours)  et Fontain
 		<div class="space-y-4">
 			<h3 class="font-display text-base font-bold text-white tracking-tight">Services & Navigation</h3>
 			<ul class="space-y-2">
-				<li><a href="/" class="hover:text-white transition duration-200 block py-0.5">Accueil</a></li>
-				<li><a href="/particuliers" class="hover:text-white transition duration-200 block py-0.5">Dépannage Particuliers</a></li>
-				<li><a href="/professionnels" class="hover:text-white transition duration-200 block py-0.5">Assistance Professionnels</a></li>
-				<li><a href="/tarifs" class="hover:text-white transition duration-200 block py-0.5">Mes Tarifs</a></li>
-				<li><a href="/faq" class="hover:text-white transition duration-200 block py-0.5">Questions Fréquentes (FAQ)</a></li>
+				<li><a href={base} class="hover:text-white transition duration-200 block py-0.5">Accueil</a></li>
+				<li><a href={base + "particuliers"} class="hover:text-white transition duration-200 block py-0.5">Dépannage Particuliers</a></li>
+				<li><a href={base + "professionnels"} class="hover:text-white transition duration-200 block py-0.5">Assistance Professionnels</a></li>
+				<li><a href={base + "tarifs"} class="hover:text-white transition duration-200 block py-0.5">Mes Tarifs</a></li>
+				<li><a href={base + "faq"} class="hover:text-white transition duration-200 block py-0.5">Questions Fréquentes (FAQ)</a></li>
 			</ul>
 		</div>
 
@@ -59,7 +60,7 @@ const zones = "Paris 12e & 13e / Ivry-sur-Seine (+ villes alentours)  et Fontain
 	<div class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
 		<p>© {new Date().getFullYear()} Clic&Zen. Tous droits réservés.</p>
 		<div class="flex items-center gap-6">
-			<a href="/mentions-legales" class="hover:text-white transition duration-200">Mentions légales</a>
+			<a href={base + "mentions-legales"} class="hover:text-white transition duration-200">Mentions légales</a>
 		</div>
 	</div>
 </footer>
