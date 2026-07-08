@@ -1,11 +1,205 @@
 ---
-import Welcome from '../components/Welcome.astro';
+// src/pages/index.astro
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const zones = "Interventions sur Paris (12-13/Ivry) et Sud Seine-et-Marne (Fontainebleau-Avon)";
 ---
 
-<Layout>
-	<Welcome />
+<Layout 
+	title="Clic&Zen | Dépannage & Assistance Informatique à Domicile"
+	description="Assistance informatique pour particuliers et professionnels. Dépannage PC/Mac, configuration Internet, sécurité, initiation. Profitez de 50% de crédit d'impôt."
+>
+	<!-- Section Hero -->
+	<section class="relative overflow-hidden bg-gradient-to-br from-clic-light via-white to-slate-50 py-16 sm:py-24 border-b border-slate-100">
+		<!-- Accent en arrière-plan -->
+		<div class="absolute top-0 right-0 w-1/3 h-1/3 bg-radial from-clic-medium/10 to-transparent blur-3xl -z-10"></div>
+		<div class="absolute bottom-0 left-0 w-1/4 h-1/4 bg-radial from-clic-red/5 to-transparent blur-3xl -z-10"></div>
+		
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+				
+				<!-- Texte Hero (Gauche) -->
+				<div class="lg:col-span-7 space-y-6 sm:space-y-8 text-center lg:text-left">
+					
+					
+					<!-- Titre Principal -->
+					<h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-slate-900 leading-tight">
+						L'informatique simple et sans prise de tête
+					</h1>
+					
+					<!-- Descriptif -->
+					<p class="text-slate-600 text-lg sm:text-xl max-w-2xl mx-auto lg:mx-0 leading-relaxed font-medium">
+						Je me déplace chez vous ou dans vos locaux pour l'assistance, l'installation et le dépannage de votre matériel. 
+						<br/>Profitez de <strong class="text-clic-dark">-50% de crédit d'impôt immédiat</strong> à domicile.
+					</p>
+					
+					<!-- Boutons d'Action -->
+					<div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+						<a href="/particuliers" class="w-full sm:w-auto bg-clic-dark hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-clic-dark/25 transition-all duration-300 hover:shadow-slate-800/35 transform hover:-translate-y-0.5 text-center text-base">
+							Pour les Particuliers
+						</a>
+						<a href="/professionnels" class="w-full sm:w-auto border-2 border-clic-dark/85 text-clic-dark hover:bg-clic-dark hover:text-white font-bold px-8 py-3.5 rounded-xl transition-all duration-300 transform hover:-translate-y-0.5 text-center text-base">
+							Pour les Professionnels
+						</a>
+					</div>
+
+					<!-- Badge Localisation -->
+					<div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-clic-dark/10 text-clic-dark font-semibold text-xs sm:text-sm border border-clic-dark/15 shadow-sm transform hover:scale-102 transition duration-200">
+						<span class="flex h-2 w-2 relative">
+							<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-clic-red opacity-75"></span>
+							<span class="relative inline-flex rounded-full h-2 w-2 bg-clic-red"></span>
+						</span>
+						<span>Interventions sur Paris (12-13/Ivry) et Sud Seine-et-Marne (Fontainebleau-Avon)</span>
+					</div>
+				</div>
+				
+				
+				<!-- Illustration SVG (Droite) -->
+				<div class="lg:col-span-5 flex justify-center transform hover:scale-103 transition duration-500">
+					<img src="/images/LogoClic&Zen.png" alt="Clic & Zen informatique" class="h-80 w-auto object-contain mb-4" />
+				</div>
+				
+			</div>
+		</div>
+	</section>
+
+
+	<!-- Section Focus Crédit d'Impôt -->
+	<section class="py-16 bg-gradient-to-r from-clic-dark to-slate-900 text-white relative overflow-hidden">
+		<!-- Éléments de fond -->
+		<div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(137,178,206,0.15),transparent)]"></div>
+		
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+				<div class="lg:col-span-8 space-y-4 text-center lg:text-left">
+					<span class="bg-clic-red font-bold text-xs uppercase tracking-wider px-3 py-1.5 rounded-full inline-block">
+						Service à la Personne (SAP)
+					</span>
+					<h2 class="font-display text-3xl sm:text-4xl font-extrabold tracking-tight">
+						Divisez le coût de vos interventions par 2
+					</h2>
+					<p class="text-slate-300 text-base sm:text-lg max-w-3xl leading-relaxed">
+						Grâce à l'agrément de services à la personne et à l'avance immédiate , toutes mes prestations d'assistance à domicile ouvrent droit à un crédit d'impôt immédiat de 50%.
+					</p>
+					<p class="text-slate-400 text-xs sm:text-sm italic">
+						* Dans la limite d'un plafond de dépenses de 3000 € par an et par foyer (soit 1500 € d'économie d'impôt maximum).
+					</p>
+				</div>
+				<div class="lg:col-span-4 flex flex-col items-center justify-center p-6 bg-white/10 rounded-2xl border border-white/10 backdrop-blur-sm">
+					<img src="/images/services_personne.png" alt="Services à la personne - 50% de crédit d'impôt" class="h-20 w-auto object-contain mb-4" />
+					<div class="text-sm font-semibold tracking-wide text-slate-200 uppercase mb-4 text-center">Déduction Immédiate</div>
+					<a href="/particuliers#credit-impot" class="bg-white hover:bg-slate-100 text-clic-dark font-bold px-6 py-3 rounded-lg transition text-sm w-full text-center shadow-md">
+						Comment en bénéficier ?
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Section Espace Particuliers / Pros -->
+	<section class="py-16 sm:py-20 bg-slate-50">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			
+			<div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+				<h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+					Des solutions adaptées à chaque besoin
+				</h2>
+				<p class="text-slate-500 text-base sm:text-lg mt-3">
+					Découvrez mes offres pour vous accompagner au quotidien.
+				</p>
+			</div>
+			
+			<div class="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12">
+				
+				<!-- Bloc Particuliers -->
+				<div class="bg-white rounded-3xl p-8 sm:p-10 shadow-sm border border-slate-100 hover:shadow-md transition flex flex-col justify-between">
+					<div class="space-y-6">
+						<div class="flex items-center justify-between">
+							<span class="text-xs font-bold uppercase tracking-wider text-clic-dark bg-clic-light px-3 py-1 rounded-full">
+								À Domicile
+							</span>
+							<span class="text-2xl">🏠</span>
+						</div>
+						
+						<h3 class="font-display text-2xl font-bold text-slate-900">Pour les particuliers</h3>
+						<p class="text-slate-600 leading-relaxed text-sm">
+							Votre ordinateur refuse de démarrer ? Votre Wi-Fi ne fonctionne plus ? Vous souhaitez apprendre à utiliser internet en sécurité ou maîtriser l'intelligence artificielle ?
+						</p>
+						
+						<ul class="space-y-3 pt-2 text-sm text-slate-700 font-medium">
+							<li class="flex items-center gap-2"><span class="text-clic-medium">✓</span> Dépannage informatique (PC/Mac, virus, lenteurs)</li>
+							<li class="flex items-center gap-2"><span class="text-clic-medium">✓</span> Prise en main de votre smartphone ou tablette</li>
+							<li class="flex items-center gap-2"><span class="text-clic-medium">✓</span> Initiation et découverte guidée de l'IA (ChatGPT)</li>
+							<li class="flex items-center gap-2"><span class="text-clic-medium">✓</span> Sécurisation de vos appareils et mots de passe</li>
+						</ul>
+					</div>
+					
+					<div class="pt-8">
+						<a href="/particuliers" class="group bg-clic-dark hover:bg-slate-800 text-white font-bold px-6 py-3.5 rounded-xl transition-all duration-200 block text-center text-sm">
+							Consulter l'offre Particuliers <span class="inline-block transform group-hover:translate-x-1 transition-transform">→</span>
+						</a>
+					</div>
+				</div>
+				
+				<!-- Bloc Professionnels -->
+				<div class="bg-white rounded-3xl p-8 sm:p-10 shadow-sm border border-slate-100 hover:shadow-md transition flex flex-col justify-between">
+					<div class="space-y-6">
+						<div class="flex items-center justify-between">
+							<span class="text-xs font-bold uppercase tracking-wider text-clic-red bg-red-50 px-3 py-1 rounded-full">
+								Entreprises & Pros
+							</span>
+							<span class="text-2xl">💼</span>
+						</div>
+						
+						<h3 class="font-display text-2xl font-bold text-slate-900">Pour les professionnels</h3>
+						<p class="text-slate-600 leading-relaxed text-sm">
+							Artisans, commerçants, professions libérales et TPE. Assurez la continuité de votre activité grâce à des équipements configurés de manière optimale.
+						</p>
+						
+						<ul class="space-y-3 pt-2 text-sm text-slate-700 font-medium">
+							<li class="flex items-center gap-2"><span class="text-clic-red">✓</span> Maintenance préventive & infogérance légère</li>
+							<li class="flex items-center gap-2"><span class="text-clic-red">✓</span> Installation réseau pro, Wi-Fi sécurisé & serveurs NAS</li>
+							<li class="flex items-center gap-2"><span class="text-clic-red">✓</span> Stratégies de sauvegarde locales et externalisées</li>
+							<li class="flex items-center gap-2"><span class="text-clic-red">✓</span> Configuration de messagerie pro avec nom de domaine</li>
+						</ul>
+					</div>
+					
+					<div class="pt-8">
+						<a href="/professionnels" class="group border-2 border-clic-dark text-clic-dark hover:bg-clic-dark hover:text-white font-bold px-6 py-3 rounded-xl transition-all duration-200 block text-center text-sm">
+							Consulter l'offre Professionnels <span class="inline-block transform group-hover:translate-x-1 transition-transform">→</span>
+						</a>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</section>
+
+	<!-- Section Appel à l'action Final -->
+	<section class="py-16 sm:py-20 bg-gradient-to-br from-clic-light to-white text-center border-t border-slate-100">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-6 sm:space-y-8">
+			<h2 class="font-display text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+				Un problème avec votre matériel ?
+			</h2>
+			<p class="text-slate-600 text-lg sm:text-xl max-w-2xl mx-auto leading-relaxed font-medium">
+				Ne restez pas bloqué ! Contactez-moi par téléphone ou envoyez-moi un e-mail pour fixer un rendez-vous.
+			</p>
+			
+			<div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+				<div class="w-full sm:w-auto bg-clic-red text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-clic-red/20 flex items-center justify-center gap-3 text-base">
+					<svg class="w-5 h-5 animate-pulse" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+					</svg>
+					<span>M'appeler au 07 67 73 32 70</span>
+				</div>
+				<a href="mailto:contact@clic-et-zen.fr" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-xl transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-base shadow-lg shadow-slate-900/10">
+					✉️ M'écrire par email
+				</a>
+			</div>
+			
+			<p class="text-slate-400 text-xs sm:text-sm pt-2">
+				Disponible du lundi au vendredi, de 9h à 20h. Devis toujours 100% gratuit et sans engagement.
+			</p>
+		</div>
+	</section>
 </Layout>

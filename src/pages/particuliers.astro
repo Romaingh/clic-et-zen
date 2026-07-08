@@ -1,0 +1,196 @@
+---
+// src/pages/particuliers.astro
+import { getCollection, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+const services = await getCollection('services', ({ data }) => {
+	return data.target === 'particulier';
+});
+const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
+
+// Résoudre tous les rendus Markdown dans le frontmatter
+const servicesWithContent = await Promise.all(
+	sortedServices.map(async (entry) => {
+		const { Content } = await render(entry);
+		return { entry, Content };
+	})
+);
+---
+
+<Layout 
+	title="Mon Assistance Informatique Particuliers à domicile | Clic&Zen"
+	description="Dépannage informatique à domicile pour particuliers. Bénéficiez de 50% de crédit d'impôt immédiat. Patience et pédagogie garanties pour PC/Mac et tablettes."
+>
+	<!-- Hero Section avec Image du Chat d'origine -->
+	<section class="bg-gradient-to-b from-clic-light to-slate-50 py-12 sm:py-16 border-b border-slate-100">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+				
+				<!-- Texte (Gauche) -->
+				<div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+					<span class="text-xs font-bold uppercase tracking-wider text-clic-dark bg-clic-medium/20 px-3.5 py-1.5 rounded-full inline-block">
+						Assistance à domicile
+					</span>
+					<h1 class="font-display text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
+						Je simplifie votre vie informatique
+					</h1>
+					<p class="text-slate-600 text-lg sm:text-xl leading-relaxed font-medium">
+						Je me déplace chez vous pour vous assister, vous conseiller et vous dépanner dans l'utilisation de vos outils numériques. Pédagogie, patience et écoute sont mes atouts pour vous aider.
+					</p>
+					
+					<div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
+						<div class="bg-clic-red text-white font-bold px-6 py-3.5 rounded-xl shadow-md flex items-center justify-center gap-2 text-sm">
+							<span>📞 M'appeler au 07 67 73 32 70</span>
+						</div>
+					</div>
+				</div>
+				
+				<!-- Image du chat d'origine (Droite) -->
+				<div class="lg:col-span-5 flex justify-center">
+					<div class="relative max-w-[340px] sm:max-w-[380px] w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border-4 border-white transform hover:scale-102 transition duration-300">
+						<img src="/images/chat_ordinateur.png" alt="Clic&Zen - Votre ordinateur vous complique la vie ?" class="w-full h-full object-cover" />
+						
+						<!-- Badge Overlay textuelle du flyer -->
+						<div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-900/70 to-transparent p-4 text-white text-center">
+							<p class="font-display font-extrabold text-sm sm:text-base leading-tight">
+								Votre ordinateur vous complique la vie ?
+							</p>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</section>
+
+	<!-- Section Liste des Services -->
+	<section class="py-16 bg-white">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			
+			<div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+				<h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+					Mes prestations d'assistance informatique
+				</h2>
+				<p class="text-slate-500 text-base sm:text-lg mt-3">
+					Toutes mes interventions sont entièrement adaptées à votre niveau.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+				{servicesWithContent.map(({ entry, Content }) => (
+					<div class="flex gap-4 p-6 sm:p-8 rounded-2xl border border-slate-100 hover:border-clic-medium/30 hover:bg-slate-50/50 transition">
+						<div class="shrink-0 select-none pointer-events-none">
+							{entry.data.icon.startsWith('/') ? (
+								<img src={entry.data.icon} alt={entry.data.title} class="w-10 h-10 object-contain" />
+							) : (
+								<span class="text-3xl block leading-none">{entry.data.icon}</span>
+							)}
+						</div>
+						<div class="space-y-2">
+							<h3 class="font-display text-lg sm:text-xl font-bold text-slate-900">{entry.data.title}</h3>
+							<div class="text-slate-800 text-base leading-relaxed">
+								<Content />
+							</div>
+							<ul class="text-sm text-slate-700 space-y-2 pt-3 font-medium">
+								{entry.data.features.map((feature) => (
+									<li>• {feature}</li>
+								))}
+							</ul>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Section Crédit d'Impôt -->
+	<section id="credit-impot" class="py-16 bg-slate-50 border-y border-slate-100">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			<div class="bg-white rounded-3xl p-8 sm:p-12 shadow-sm border border-slate-100 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+				
+				<!-- Description du crédit d'impôt (Gauche) -->
+				<div class="lg:col-span-7 space-y-6">
+					<div class="flex flex-col sm:flex-row sm:items-center gap-4">
+						<img src="/images/services_personne.png" alt="Services à la personne - 50% de réduction ou crédit d'impôts" class="h-16 w-auto object-contain self-start" />
+						<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-clic-red/10 text-clic-red font-bold text-xs w-fit">
+							<span>Avance Immédiate Disponible</span>
+						</div>
+					</div>
+					<h2 class="font-display text-3xl font-extrabold text-slate-900 leading-tight">
+						Bénéficiez de 50 % de crédit d'impôt immédiat
+					</h2>
+					<p class="text-slate-600 leading-relaxed text-sm">
+						Mon activité est déclarée sous l'agrément <strong>Services à la Personne (SAP)</strong>. Cet agrément vous permet de déduire la moitié du prix de mes interventions à domicile de vos impôts.
+					</p>
+					
+					<div class="space-y-4">
+						<h4 class="font-bold text-slate-800 text-sm">Deux façons d'en profiter :</h4>
+						<ul class="space-y-3 text-sm text-slate-600">
+							<li class="flex gap-2">
+								<span class="text-clic-red font-bold shrink-0">1.</span>
+								<div>
+									<strong class="text-slate-900">L'Avance Immédiate (Recommandé)</strong> : Vous ne payez que 50% de la facture lors de mon intervention. L'URSSAF prend en charge l'autre moitié directement. Aucune avance de trésorerie requise !
+								</div>
+							</li>
+							<li class="flex gap-2">
+								<span class="text-clic-red font-bold shrink-0">2.</span>
+								<div>
+									<strong class="text-slate-900">Le Crédit d'Impôt classique</strong> : Vous réglez la facture normalement. Je vous envoie une attestation fiscale annuelle, et l'État vous rembourse 50% l'année suivante.
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<!-- Simulateur Visuel (Droite) -->
+				<div class="lg:col-span-5 bg-gradient-to-br from-clic-dark to-slate-800 rounded-2xl p-6 sm:p-8 text-white shadow-lg space-y-6">
+					<h3 class="font-display text-lg font-bold text-center border-b border-white/10 pb-4">
+						Simulation Tarif Particulier
+					</h3>
+					
+					<div class="space-y-4">
+						<div class="flex justify-between items-center text-sm text-slate-300">
+							<span>Première heure d'assistance</span>
+							<span>80 € TTC</span>
+						</div>
+						<div class="flex justify-between items-center text-sm text-clic-medium">
+							<span>Déduction d'impôt immédiate</span>
+							<span>- 40 € TTC</span>
+						</div>
+						<hr class="border-white/10" />
+						<div class="flex justify-between items-center pt-2">
+							<span class="font-bold">Coût réel restant à votre charge</span>
+							<span class="text-2xl font-black text-clic-red font-display">40 € <span class="text-xs">TTC</span></span>
+						</div>
+					</div>
+
+					<div class="bg-white/5 rounded-xl p-4 border border-white/5 text-xs text-slate-300 leading-relaxed">
+						📌 <strong>Note sur les tarifs :</strong> Mes déplacements sont entièrement gratuits dans mes zones d'intervention.
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA Section -->
+	<section class="py-16 bg-gradient-to-br from-clic-light to-white text-center border-t border-slate-100">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-6">
+			<h2 class="font-display text-3xl font-extrabold text-slate-900 tracking-tight">
+				Prêt à simplifier votre vie informatique ?
+			</h2>
+			<p class="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">
+				Mes déplacements sont inclus et gratuits dans les zones d'Ivry-sur-Seine / Paris Sud-Est et Fontainebleau-Avon / Vulaines-sur-Seine.
+			</p>
+			
+			<div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+				<div class="w-full sm:w-auto bg-clic-red text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-clic-red/20 flex items-center justify-center gap-3 text-base">
+					<span>📞 M'appeler au 07 67 73 32 70</span>
+				</div>
+				<a href="/tarifs" class="w-full sm:w-auto border-2 border-clic-dark text-clic-dark hover:bg-clic-dark hover:text-white font-bold px-8 py-3.5 rounded-xl transition text-base text-center">
+					Consulter les formules de tarifs
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>

@@ -1,0 +1,65 @@
+---
+// src/components/Footer.astro
+const zones = "Paris 12e & 13e / Ivry-sur-Seine (+ villes alentours)  et Fontainebleau-Avon / Vulaines-sur-Seine (+ villes alentours)";
+---
+
+<footer class="bg-slate-900 text-slate-400 text-sm pt-12 pb-8 border-t border-slate-800">
+	<div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 pb-8">
+		
+		<!-- Colonne 1: À propos -->
+		<div class="space-y-4">
+			<div class="flex items-center gap-2">
+				<!-- Mini Logo Planet -->
+				<img src="/images/logo_mini.png" alt="Clic & Zen Logo" class="w-6 h-6 object-contain select-none pointer-events-none" />
+				<span class="font-display text-lg font-bold text-white tracking-tight">Clic<span class="text-amber-400">&</span>Zen</span>
+			</div>
+			<p class="text-slate-400 leading-relaxed text-sm">
+				Votre informaticien de proximité pour le dépannage et l'assistance informatique à domicile ou au bureau. Pédagogie, sécurité et réactivité.
+			</p>
+			<div class="pt-2">
+				<span class="block text-xs font-semibold uppercase tracking-wider text-slate-500">Zones d'intervention</span>
+				<p class="text-slate-400 text-xs mt-1">{zones}</p>
+			</div>
+		</div>
+
+		<!-- Colonne 2: Liens rapides -->
+		<div class="space-y-4">
+			<h3 class="font-display text-base font-bold text-white tracking-tight">Services & Navigation</h3>
+			<ul class="space-y-2">
+				<li><a href="/" class="hover:text-white transition duration-200 block py-0.5">Accueil</a></li>
+				<li><a href="/particuliers" class="hover:text-white transition duration-200 block py-0.5">Dépannage Particuliers</a></li>
+				<li><a href="/professionnels" class="hover:text-white transition duration-200 block py-0.5">Assistance Professionnels</a></li>
+				<li><a href="/tarifs" class="hover:text-white transition duration-200 block py-0.5">Mes Tarifs</a></li>
+				<li><a href="/faq" class="hover:text-white transition duration-200 block py-0.5">Questions Fréquentes (FAQ)</a></li>
+			</ul>
+		</div>
+
+		<!-- Colonne 3: Contact & Horaires -->
+		<div class="space-y-4">
+			<h3 class="font-display text-base font-bold text-white tracking-tight">Contact & Horaires</h3>
+			<ul class="space-y-2.5">
+				<li class="flex items-center gap-2">
+					<span class="text-clic-medium font-bold">📞</span>
+					<span class="font-semibold text-white">07 67 73 32 70</span>
+				</li>
+				<li class="flex items-center gap-2">
+					<span class="text-clic-medium">✉️</span>
+					<a href="mailto:contact@clic-et-zen.fr" class="hover:text-white transition">contact@clic-et-zen.fr</a>
+				</li>
+				<li class="pt-2 text-xs text-slate-500">
+					<span class="block font-semibold uppercase tracking-wider">Disponibilité</span>
+					<span class="block text-slate-400 mt-1">Du lundi au vendredi — 9h à 20h</span>
+				</li>
+			</ul>
+		</div>
+
+	</div>
+
+	<!-- Barre de copyright et Mentions légales -->
+	<div class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 border-t border-slate-800/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+		<p>© {new Date().getFullYear()} Clic&Zen. Tous droits réservés.</p>
+		<div class="flex items-center gap-6">
+			<a href="/mentions-legales" class="hover:text-white transition duration-200">Mentions légales</a>
+		</div>
+	</div>
+</footer>

@@ -1,0 +1,139 @@
+---
+// src/pages/professionnels.astro
+import { getCollection, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+
+const services = await getCollection('services', ({ data }) => {
+	return data.target === 'professionnel';
+});
+const sortedServices = services.sort((a, b) => a.data.order - b.data.order);
+
+// Résoudre tous les rendus Markdown dans le frontmatter
+const servicesWithContent = await Promise.all(
+	sortedServices.map(async (entry) => {
+		const { Content } = await render(entry);
+		return { entry, Content };
+	})
+);
+---
+
+<Layout 
+	title="Mon Assistance Informatique Professionnels & TPE | Clic&Zen"
+	description="Services informatiques pour professionnels, TPE, artisans et professions libérales. Maintenance de parc, réseau sécurisé, sauvegardes pro et dépannage réactif."
+>
+	<!-- Hero Section -->
+	<section class="bg-gradient-to-b from-clic-light to-slate-50 py-16 sm:py-20 border-b border-slate-100">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+			<span class="text-xs font-bold uppercase tracking-wider text-clic-red bg-red-50 px-3.5 py-1.5 rounded-full inline-block mb-4">
+				Espace Entreprises & Pros
+			</span>
+			<h1 class="font-display text-4xl sm:text-5xl font-black text-slate-900 tracking-tight max-w-4xl mx-auto leading-tight">
+				Solutions informatiques pour Indépendants & TPE 
+			</h1>
+			<p class="text-slate-600 text-lg sm:text-xl max-w-3xl mx-auto mt-4 leading-relaxed font-medium">
+				Assurez la continuité de votre activité grâce à des équipements sécurisés, performants et maintenus à jour par un professionnel.
+			</p>
+			
+			<div class="mt-8 flex justify-center gap-4">
+				<a href="mailto:contact@clic-et-zen.fr?subject=Demande de devis professionnel - Clic&Zen" class="bg-clic-dark hover:bg-slate-800 text-white font-bold px-6 py-3.5 rounded-xl shadow-md transition flex items-center gap-2 text-sm">
+					✉️ Me demander un devis gratuit
+				</a>
+			</div>
+		</div>
+	</section>
+
+	<!-- Section Services Professionnels -->
+	<section class="py-16 bg-white">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			
+			<div class="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
+				<h2 class="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
+					Mes prestations informatiques professionnelles
+				</h2>
+				<p class="text-slate-500 text-base sm:text-lg mt-3">
+					Des interventions réactives pour minimiser les interruptions de votre activité.
+				</p>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+				{servicesWithContent.map(({ entry, Content }) => (
+					<div class="flex gap-4 p-6 sm:p-8 rounded-2xl border border-slate-100 hover:border-clic-red/30 hover:bg-slate-50/50 transition">
+						<div class="shrink-0 select-none pointer-events-none">
+							{entry.data.icon.startsWith('/') ? (
+								<img src={entry.data.icon} alt={entry.data.title} class="w-10 h-10 object-contain" />
+							) : (
+								<span class="text-3xl block leading-none">{entry.data.icon}</span>
+							)}
+						</div>
+						<div class="space-y-2">
+							<h3 class="font-display text-lg sm:text-xl font-bold text-slate-900">{entry.data.title}</h3>
+							<div class="text-slate-800 text-base leading-relaxed">
+								<Content />
+							</div>
+							<ul class="text-sm text-slate-700 space-y-2 pt-3 font-medium">
+								{entry.data.features.map((feature) => (
+									<li>• {feature}</li>
+								))}
+							</ul>
+						</div>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- Section Nos Engagements Professionnels -->
+	<section class="py-16 bg-slate-50 border-y border-slate-100">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			
+			<div class="text-center max-w-3xl mx-auto mb-12">
+				<h2 class="font-display text-3xl font-extrabold text-slate-900 tracking-tight">
+					Mes engagements pour votre activité
+				</h2>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+				<!-- Engagement 1 -->
+				<div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-center">
+					<div class="text-3xl mb-4">💼</div>
+					<h4 class="font-display text-lg font-bold text-slate-900 mb-2">Devis & Facturation HT</h4>
+					<p class="text-slate-600 text-sm leading-relaxed">
+						Devis détaillé gratuit sous 24h. Facturation claire en Hors Taxes (HT) avec TVA récupérable pour votre comptabilité. Mes tarifs sont transparents et sans frais cachés.
+					</p>
+				</div>
+
+				<!-- Engagement 2 -->
+				<div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 text-center">
+					<div class="text-3xl mb-4">🛡️</div>
+					<h4 class="font-display text-lg font-bold text-slate-900 mb-2">Confidentialité Absolue</h4>
+					<p class="text-slate-600 text-sm leading-relaxed">
+						Je vous garantis une discrétion totale concernant vos fichiers commerciaux, comptables et administratifs. Signature d'un accord de confidentialité sur simple demande.
+					</p>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA Section -->
+	<section class="py-16 bg-gradient-to-br from-clic-light to-white text-center">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-6">
+			<h2 class="font-display text-3xl font-extrabold text-slate-900 tracking-tight">
+				Un audit ou un besoin urgent ?
+			</h2>
+			<p class="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">
+				Discutons de vos besoins et mettons en place des solutions adaptées à la taille de votre structure.
+			</p>
+			
+			<div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+				<div class="w-full sm:w-auto bg-clic-red text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-clic-red/20 flex items-center justify-center gap-3 text-base">
+					<span>📞 Me contacter : 07 67 73 32 70</span>
+				</div>
+				<a href="mailto:contact@clic-et-zen.fr?subject=Demande de devis professionnel - Clic&Zen" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-xl transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-base shadow-lg">
+					✉️ contact@clic-et-zen.fr
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>

@@ -1,0 +1,114 @@
+---
+// src/pages/faq.astro
+import { getCollection, render } from 'astro:content';
+import Layout from '../layouts/Layout.astro';
+import ZoneMap from '../components/ZoneMap.astro';
+
+const faqEntries = await getCollection('faq');
+const sortedFaq = faqEntries.sort((a, b) => a.data.order - b.data.order);
+
+// Résoudre tous les rendus Markdown dans le frontmatter
+const faqWithContent = await Promise.all(
+	sortedFaq.map(async (entry) => {
+		const { Content } = await render(entry);
+		return { entry, Content };
+	})
+);
+---
+
+<Layout 
+	title="Foire Aux Questions (FAQ) | Clic&Zen"
+	description="Trouvez des réponses à toutes vos questions concernant le dépannage informatique à domicile, le crédit d'impôt, mes zones d'intervention et mes garanties."
+>
+	<!-- Hero Section -->
+	<section class="bg-gradient-to-b from-clic-light to-slate-50 py-16 sm:py-20 border-b border-slate-100">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+			<span class="text-xs font-bold uppercase tracking-wider text-clic-dark bg-clic-medium/20 px-3.5 py-1.5 rounded-full inline-block mb-4">
+				Foire aux questions
+			</span>
+			<h1 class="font-display text-4xl sm:text-5xl font-black text-slate-900 tracking-tight max-w-4xl mx-auto leading-tight">
+				Des questions ? <br class="sm:hidden" /> J'y réponds.
+			</h1>
+			<p class="text-slate-600 text-lg sm:text-xl max-w-3xl mx-auto mt-4 leading-relaxed font-medium">
+				Retrouvez toutes les informations sur mes modalités d'intervention, mon agrément fiscal et ma zone géographique.
+			</p>
+		</div>
+	</section>
+
+	<!-- Section FAQ (simple colonne avec carte intégrée conditionnellement) -->
+	<section class="py-16 bg-white">
+		<div class="max-w-3xl mx-auto px-4 sm:px-6">
+			<div class="space-y-6">
+				{faqWithContent.map(({ entry, Content }) => (
+					<details class="group border border-slate-200 bg-white rounded-2xl p-6 transition-all duration-300 hover:border-clic-medium/40 [&_summary::-webkit-details-marker]:hidden">
+						<summary class="flex items-center justify-between font-bold text-slate-900 cursor-pointer list-none text-base sm:text-lg">
+							<span>{entry.data.title}</span>
+							<span class="transition duration-300 group-open:rotate-180 text-clic-medium shrink-0 ml-4">
+								▼
+							</span>
+						</summary>
+						<div class="mt-4 text-slate-600 leading-relaxed text-sm sm:text-base border-t border-slate-100 pt-4 faq-content">
+							<Content />
+							{entry.id.includes('zone-intervention') && (
+								<div class="mt-6 max-w-xl mx-auto">
+									<ZoneMap />
+								</div>
+							)}
+						</div>
+					</details>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA Section -->
+	<section class="py-16 bg-slate-50 border-t border-slate-100 text-center">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-6">
+			<h2 class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+				Vous avez une autre question ?
+			</h2>
+			<p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+				Contactez-moi directement par téléphone ou par e-mail. Je me ferai un plaisir de vous renseigner.
+			</p>
+			
+			<div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+				<div class="w-full sm:w-auto bg-clic-red text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-clic-red/20 flex items-center justify-center gap-3 text-base">
+					<span>📞 07 67 73 32 70</span>
+				</div>
+				<a href="mailto:contact@clic-et-zen.fr" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-xl transition transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-base shadow-lg">
+					✉️ contact@clic-et-zen.fr
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	/* Restaurer les styles pour le HTML généré par le Markdown */
+	.faq-content :global(p) {
+		margin-bottom: 1rem;
+	}
+	.faq-content :global(p:last-child) {
+		margin-bottom: 0;
+	}
+	.faq-content :global(ul) {
+		margin-top: 0.5rem;
+		margin-bottom: 1rem;
+		padding-left: 1.25rem;
+		list-style-type: disc;
+	}
+	.faq-content :global(ol) {
+		margin-top: 0.5rem;
+		margin-bottom: 1rem;
+		padding-left: 1.25rem;
+		list-style-type: decimal;
+	}
+	.faq-content :global(li) {
+		margin-bottom: 0.5rem;
+		padding-left: 0.25rem;
+	}
+	.faq-content :global(strong) {
+		font-weight: 700;
+		color: #0f172a; /* text-slate-900 */
+	}
+</style>

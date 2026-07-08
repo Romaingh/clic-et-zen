@@ -1,0 +1,11 @@
+---
+// src/layouts/MonLayout.astro
+import Layout from './Layout.astro';
+const { frontmatter } = Astro.props;
+---
+
+<Layout title={frontmatter?.title} description={frontmatter?.description}>
+	<div class="max-w-4xl mx-auto bg-white my-12 p-6 sm:p-10 rounded-2xl shadow-sm border border-slate-100 prose prose-slate">
+		<slot />
+	</div>
+</Layout>

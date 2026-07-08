@@ -1,0 +1,118 @@
+---
+// src/components/Header.astro
+const pathname = Astro.url.pathname;
+const isCurrent = (path: string) => {
+	if (path === '/') {
+		return pathname === '/' || pathname === '/index.html';
+	}
+	return pathname.replace(/\/$/, '') === path.replace(/\/$/, '');
+};
+---
+
+<header class="sticky top-0 z-50 bg-clic-dark/95 backdrop-blur-md text-white border-b border-clic-medium/20 shadow-md">
+	<div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+		
+		<!-- Logo -->
+		<a href="/" class="flex items-center gap-2 group focus:outline-none focus:ring-2 focus:ring-clic-medium rounded-lg px-2 py-1 -ml-2">
+			<!-- Mini Logo Planet -->
+			<img src="/images/logo_mini.png" alt="Clic & Zen Logo" class="w-7 h-7 object-contain group-hover:scale-110 transition duration-300 select-none pointer-events-none" />
+			<span class="font-display text-xl sm:text-2xl font-extrabold tracking-tight">
+				Clic<span class="text-amber-400 group-hover:text-white transition duration-300">&</span>Zen
+			</span>
+		</a>
+		
+		<!-- Desktop Nav -->
+		<nav class="hidden md:flex items-center gap-6 lg:gap-8 font-semibold text-sm lg:text-base">
+			<a href="/" class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
+				Accueil
+				{isCurrent('/') && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-clic-medium rounded-full"></span>}
+			</a>
+			<a href="/particuliers" class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/particuliers') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
+				Particuliers
+				{isCurrent('/particuliers') && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-clic-medium rounded-full"></span>}
+			</a>
+			<a href="/professionnels" class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/professionnels') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
+				Professionnels
+				{isCurrent('/professionnels') && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-clic-medium rounded-full"></span>}
+			</a>
+			<a href="/tarifs" class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/tarifs') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
+				Tarifs
+				{isCurrent('/tarifs') && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-clic-medium rounded-full"></span>}
+			</a>
+			<a href="/faq" class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/faq') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
+				FAQ
+				{isCurrent('/faq') && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-clic-medium rounded-full"></span>}
+			</a>
+		</nav>
+
+		<!-- Right Side CTA (Desktop) -->
+		<div class="hidden md:flex items-center gap-4">
+			<div class="bg-clic-red text-white font-bold px-5 py-2.5 rounded-full shadow-lg shadow-clic-red/20 flex items-center gap-2 text-sm">
+				<svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+				</svg>
+				<span>07 67 73 32 70</span>
+			</div>
+		</div>
+
+		<!-- Mobile Menu Button & Phone (Mobile Only) -->
+		<div class="flex items-center gap-3 md:hidden">
+			<button id="menu-toggle" type="button" class="text-slate-200 hover:text-white p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-clic-medium" aria-controls="mobile-menu" aria-expanded="false">
+				<span class="sr-only">Ouvrir le menu</span>
+				<!-- Hamburger Icon -->
+				<svg id="hamburger-icon" class="w-6 h-6 block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+				</svg>
+				<!-- Close Icon (hidden initially) -->
+				<svg id="close-icon" class="w-6 h-6 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+					<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+				</svg>
+			</button>
+		</div>
+		
+	</div>
+
+	<!-- Mobile Menu Panel (Hidden by default) -->
+	<div id="mobile-menu" class="hidden md:hidden border-t border-clic-medium/10 bg-clic-dark/98 backdrop-blur-md">
+		<nav class="flex flex-col px-4 pt-2 pb-6 space-y-3 font-semibold text-base">
+			<a href="/" class={`px-3 py-2 rounded-lg transition ${isCurrent('/') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
+				Accueil
+			</a>
+			<a href="/particuliers" class={`px-3 py-2 rounded-lg transition ${isCurrent('/particuliers') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
+				Particuliers
+			</a>
+			<a href="/professionnels" class={`px-3 py-2 rounded-lg transition ${isCurrent('/professionnels') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
+				Professionnels
+			</a>
+			<a href="/tarifs" class={`px-3 py-2 rounded-lg transition ${isCurrent('/tarifs') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
+				Tarifs
+			</a>
+			<a href="/faq" class={`px-3 py-2 rounded-lg transition ${isCurrent('/faq') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
+				FAQ
+			</a>
+		</nav>
+	</div>
+</header>
+
+<script>
+	const menuToggle = document.getElementById('menu-toggle');
+	const mobileMenu = document.getElementById('mobile-menu');
+	const hamburgerIcon = document.getElementById('hamburger-icon');
+	const closeIcon = document.getElementById('close-icon');
+
+	if (menuToggle && mobileMenu && hamburgerIcon && closeIcon) {
+		menuToggle.addEventListener('click', () => {
+			const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+			
+			// Toggle ARIA state
+			menuToggle.setAttribute('aria-expanded', (!isExpanded).toString());
+			
+			// Toggle menu visibility
+			mobileMenu.classList.toggle('hidden');
+			
+			// Toggle icons
+			hamburgerIcon.classList.toggle('hidden');
+			closeIcon.classList.toggle('hidden');
+		});
+	}
+</script>
