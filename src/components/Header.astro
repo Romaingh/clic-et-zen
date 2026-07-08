@@ -1,5 +1,8 @@
 ---
 // src/components/Header.astro
+import { Image } from 'astro:assets';
+import logoMini from '../assets/images/logo_mini.png';
+
 const pathname = Astro.url.pathname;
 const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 
@@ -17,7 +20,7 @@ const isCurrent = (path: string) => {
 		<!-- Logo -->
 		<a href={base} class="flex items-center gap-2 group focus:outline-none focus:ring-2 focus:ring-clic-medium rounded-lg px-2 py-1 -ml-2">
 			<!-- Mini Logo Planet -->
-			<img src={base + "images/logo_mini.png"} alt="Clic & Zen Logo" class="w-7 h-7 object-contain group-hover:scale-110 transition duration-300 select-none pointer-events-none" />
+			<Image src={logoMini} alt="Clic & Zen Logo" class="w-7 h-7 object-contain group-hover:scale-110 transition duration-300 select-none pointer-events-none" width={28} height={28} />
 			<span class="font-display text-xl sm:text-2xl font-extrabold tracking-tight">
 				Clic<span class="text-amber-400 group-hover:text-white transition duration-300">&</span>Zen
 			</span>

@@ -1,7 +1,7 @@
 ---
 title: "Découvrir l'intelligence artificielle"
 target: "particulier"
-icon: "/images/robot_icon.png"
+icon: "../../assets/images/robot_icon.png"
 order: 3
 features:
   - "Comprendre ce qu'est l'intelligence artificielle"

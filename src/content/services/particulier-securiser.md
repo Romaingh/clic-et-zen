@@ -1,7 +1,7 @@
 ---
 title: "Sécuriser vos appareils et éviter les arnaques"
 target: "particulier"
-icon: "🔒"
+icon: "../../assets/images/Cadenas.png"
 order: 2
 features:
   - "Gérer vos mots de passe sans effort"

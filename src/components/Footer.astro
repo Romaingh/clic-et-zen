@@ -1,5 +1,8 @@
 ---
 // src/components/Footer.astro
+import { Image } from 'astro:assets';
+import logoMini from '../assets/images/logo_mini.png';
+
 const zones = "Paris 12e & 13e / Ivry-sur-Seine (+ villes alentours)  et Fontainebleau-Avon / Vulaines-sur-Seine (+ villes alentours)";
 const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 ---
@@ -11,7 +14,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 		<div class="space-y-4">
 			<div class="flex items-center gap-2">
 				<!-- Mini Logo Planet -->
-				<img src={base + "images/logo_mini.png"} alt="Clic & Zen Logo" class="w-6 h-6 object-contain select-none pointer-events-none" />
+				<Image src={logoMini} alt="Clic & Zen Logo" class="w-6 h-6 object-contain select-none pointer-events-none" width={24} height={24} />
 				<span class="font-display text-lg font-bold text-white tracking-tight">Clic<span class="text-amber-400">&</span>Zen</span>
 			</div>
 			<p class="text-slate-400 leading-relaxed text-sm">

@@ -10,4 +10,10 @@ export default defineConfig({
   },
   site: 'https://romaingh.github.io',
   base: '/clic-et-zen',
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp'
+    },
+    format: ['avif', 'webp']
+  }
 });

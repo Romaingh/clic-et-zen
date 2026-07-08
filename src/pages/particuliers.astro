@@ -1,7 +1,10 @@
 ---
 // src/pages/particuliers.astro
 import { getCollection, render } from 'astro:content';
+import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
+import chatOrdinateur from '../assets/images/chat_ordinateur.png';
+import servicesPersonne from '../assets/images/services_personne.png';
 
 const services = await getCollection('services', ({ data }) => {
 	return data.target === 'particulier';
@@ -41,7 +44,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 					
 					<div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
 						<div class="bg-clic-red text-white font-bold px-6 py-3.5 rounded-xl shadow-md flex items-center justify-center gap-2 text-sm">
-							<span>📞 M'appeler au 07 67 73 32 70</span>
+							<span>📞 07 67 73 32 70</span>
 						</div>
 					</div>
 				</div>
@@ -49,7 +52,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 				<!-- Image du chat d'origine (Droite) -->
 				<div class="lg:col-span-5 flex justify-center">
 					<div class="relative max-w-[340px] sm:max-w-[380px] w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-xl border-4 border-white transform hover:scale-102 transition duration-300">
-						<img src={base + "images/chat_ordinateur.png"} alt="Clic&Zen - Votre ordinateur vous complique la vie ?" class="w-full h-full object-cover" />
+						<Image src={chatOrdinateur} alt="Clic&Zen - Votre ordinateur vous complique la vie ?" class="w-full h-full object-cover" width={380} height={285} />
 						
 						<!-- Badge Overlay textuelle du flyer -->
 						<div class="absolute bottom-0 inset-x-0 bg-gradient-to-t from-slate-950 via-slate-900/70 to-transparent p-4 text-white text-center">
@@ -81,7 +84,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 				{servicesWithContent.map(({ entry, Content }) => (
 					<div class="flex gap-4 p-6 sm:p-8 rounded-2xl border border-slate-100 hover:border-clic-medium/30 hover:bg-slate-50/50 transition">
 						<div class="shrink-0 select-none pointer-events-none">
-							{entry.data.icon.startsWith('/') ? (
+							{typeof entry.data.icon === 'object' ? (
+								<Image src={entry.data.icon} alt={entry.data.title} class="w-8 h-8 object-contain" width={32} />
+							) : typeof entry.data.icon === 'string' && entry.data.icon.startsWith('/') ? (
 								<img src={base + entry.data.icon.slice(1)} alt={entry.data.title} class="w-10 h-10 object-contain" />
 							) : (
 								<span class="text-3xl block leading-none">{entry.data.icon}</span>
@@ -112,7 +117,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
 				<!-- Description du crédit d'impôt (Gauche) -->
 				<div class="lg:col-span-7 space-y-6">
 					<div class="flex flex-col sm:flex-row sm:items-center gap-4">
-						<img src={base + "images/services_personne.png"} alt="Services à la personne - 50% de réduction ou crédit d'impôts" class="h-16 w-auto object-contain self-start" />
+						<Image src={servicesPersonne} alt="Services à la personne - 50% de réduction ou crédit d'impôts" class="h-16 w-auto object-contain self-start" height={64} />
 						<div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-clic-red/10 text-clic-red font-bold text-xs w-fit">
 							<span>Avance Immédiate Disponible</span>
 						</div>

@@ -13,10 +13,10 @@ const faq = defineCollection({
 // Collection pour les Prestations / Services
 const services = defineCollection({
 	loader: glob({ pattern: '**/[^_]*.md', base: "./src/content/services" }),
-	schema: z.object({
+	schema: ({ image }) => z.object({
 		title: z.string(),
 		target: z.enum(['particulier', 'professionnel']),
-		icon: z.string(),
+		icon: z.union([image(), z.string()]),
 		order: z.number(),
 		features: z.array(z.string())
 	})

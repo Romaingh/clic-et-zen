@@ -1,7 +1,7 @@
 ---
 title: "Réseau & Sécurité Professionnelle"
 target: "professionnel"
-icon: "🔒"
+icon: "../../assets/images/Cadenas.png"
 order: 2
 features:
   - "Configuration de Wi-Fi invités et Wi-Fi collaborateurs cloisonnés"
