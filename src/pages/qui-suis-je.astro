@@ -1,0 +1,135 @@
+---
+// src/pages/qui-suis-je.astro
+import Layout from '../layouts/Layout.astro';
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '') + '/';
+---
+
+<Layout 
+	title="Qui suis-je ? | Clic&Zen"
+	description="Découvrez le parcours de Romain, votre dépanneur et formateur informatique à domicile et en entreprise. Pédagogie, expérience de 5+ ans, informatique et jeux vidéo."
+>
+	<!-- Section Hero -->
+	<section class="bg-gradient-to-b from-clic-light to-slate-50 py-16 sm:py-20 border-b border-slate-100">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6 text-center">
+			<span class="text-xs font-bold uppercase tracking-wider text-clic-dark bg-clic-medium/20 px-3.5 py-1.5 rounded-full inline-block mb-4">
+				Présentation
+			</span>
+			<h1 class="font-display text-4xl sm:text-5xl font-black text-slate-900 tracking-tight max-w-4xl mx-auto leading-tight">
+				Découvrez Clic<span class="text-amber-500">&</span>Zen
+			</h1>
+			<p class="text-slate-600 text-lg sm:text-xl max-w-3xl mx-auto mt-4 leading-relaxed font-medium">
+				Romain, votre conseiller, formateur et dépanneur informatique de proximité pour particuliers et professionnels.
+			</p>
+		</div>
+	</section>
+
+	<!-- Section Contenu Principal -->
+	<section class="py-16 bg-white">
+		<div class="max-w-5xl mx-auto px-4 sm:px-6">
+			<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+				
+				<!-- Colonne de gauche: Parcours -->
+				<div class="lg:col-span-7 space-y-6">
+					<h2 class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight flex items-center gap-2">
+						<span>👨‍💻</span> Mon parcours professionnel
+					</h2>
+					<p class="text-slate-600 leading-relaxed text-base">
+						Passionné par les technologies depuis mon plus jeune âge, j'ai eu la chance de faire de cette passion mon métier. J'ai travaillé de nombreuses années au cœur du secteur de <strong>l'informatique et des jeux vidéo</strong>, des industries exigeantes qui demandent une rigueur technique sans faille et une capacité constante d'adaptation.
+					</p>
+					<p class="text-slate-600 leading-relaxed text-base">
+						Fort de ces expériences, j'ai choisi de me réorienter vers le service direct à l'humain. <strong>Avec une expérience de plus de 5 ans</strong>, j'accompagne au quotidien les particuliers et les petites entreprises dans la gestion de leurs équipements numériques.
+					</p>
+					<p class="text-slate-600 leading-relaxed text-base">
+						Que ce soit pour du dépannage matériel, de l'installation réseau ou de la sécurisation de données, je mets mon savoir-faire au service de votre sérénité numérique.
+					</p>
+				</div>
+
+				<!-- Colonne de droite: Philosophie -->
+				<div class="lg:col-span-5 space-y-6">
+					<div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-3xl p-8 shadow-xl border border-slate-700/30 relative overflow-hidden">
+						<!-- Accent de couleur en fond -->
+						<div class="absolute -right-12 -bottom-12 w-32 h-32 bg-clic-medium/20 rounded-full blur-2xl"></div>
+						
+						<h3 class="font-display text-xl font-bold mb-4 flex items-center gap-2">
+							<span>💡</span> Ma philosophie
+						</h3>
+						
+						<blockquote class="border-l-4 border-amber-400 pl-4 italic text-slate-300 text-sm sm:text-base mb-6 leading-relaxed">
+							"Donnez un poisson à quelqu'un, il mangera un jour. Apprenez-lui à pêcher, il mangera toujours."
+						</blockquote>
+						
+						<p class="text-slate-300 text-sm leading-relaxed">
+							C'est le cœur de mon approche. Plutôt que de simplement résoudre un problème sur votre ordinateur de façon opaque en vous laissant dans l'incompréhension, <strong>je prends le temps de vous expliquer</strong> chaque étape.
+						</p>
+						<p class="text-slate-300 text-sm leading-relaxed mt-4">
+							Mon but est de faire preuve de patience et de pédagogie pour vous transmettre les bons réflexes, sécuriser vos usages et vous rendre <strong>pleinement autonome</strong> face à vos outils numériques.
+						</p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+
+	<!-- Section Forces / Valeurs -->
+	<section class="py-16 bg-slate-50 border-y border-slate-100">
+		<div class="max-w-6xl mx-auto px-4 sm:px-6">
+			<div class="text-center max-w-3xl mx-auto mb-12">
+				<h2 class="font-display text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+					Pourquoi me confier votre informatique ?
+				</h2>
+			</div>
+
+			<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<!-- Force 1 -->
+				<div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
+					<div class="text-3xl bg-clic-medium/10 w-14 h-14 rounded-full flex items-center justify-center mb-4 select-none">🎓</div>
+					<h4 class="font-display text-lg font-bold text-slate-900 mb-2">Pédagogie Active</h4>
+					<p class="text-slate-600 text-sm leading-relaxed">
+						Je m'adapte à votre niveau, sans jargon complexe. Des explications simples et claires pour que l'informatique devienne un plaisir et non une contrainte.
+					</p>
+				</div>
+
+				<!-- Force 2 -->
+				<div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
+					<div class="text-3xl bg-clic-medium/10 w-14 h-14 rounded-full flex items-center justify-center mb-4 select-none">🛠️</div>
+					<h4 class="font-display text-lg font-bold text-slate-900 mb-2">Double Expertise</h4>
+					<p class="text-slate-600 text-sm leading-relaxed">
+						Mon parcours dans l'IT et les jeux vidéo m'apporte une double vision : la rigueur de l'ingénierie informatique et le sens du service utilisateur.
+					</p>
+				</div>
+
+				<!-- Force 3 -->
+				<div class="bg-white p-8 rounded-2xl shadow-sm border border-slate-100 flex flex-col items-center text-center">
+					<div class="text-3xl bg-clic-medium/10 w-14 h-14 rounded-full flex items-center justify-center mb-4 select-none">⏳</div>
+					<h4 class="font-display text-lg font-bold text-slate-900 mb-2">5+ Ans d'Expérience</h4>
+					<p class="text-slate-600 text-sm leading-relaxed">
+						Plus de 5 années à intervenir sur le terrain chez les particuliers et TPE. Une grande connaissance des problématiques et des pannes courantes.
+					</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- CTA Section -->
+	<section class="py-16 bg-gradient-to-br from-clic-light to-white text-center">
+		<div class="max-w-4xl mx-auto px-4 sm:px-6 space-y-6">
+			<h2 class="font-display text-3xl font-extrabold text-slate-900 tracking-tight">
+				Besoin d'un accompagnement personnalisé ?
+			</h2>
+			<p class="text-slate-600 text-lg max-w-2xl mx-auto leading-relaxed">
+				Découvrez mes formules de tarifs claires et transparentes, avec 50% de crédit d'impôt immédiat pour les particuliers.
+			</p>
+			
+			<div class="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
+				<a href={base + "tarifs"} class="w-full sm:w-auto bg-clic-dark hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition text-base text-center">
+					Consulter mes tarifs
+				</a>
+				<a href="mailto:contact@clic-et-zen.fr" class="w-full sm:w-auto border-2 border-clic-dark text-clic-dark hover:bg-clic-dark hover:text-white font-bold px-8 py-3.5 rounded-xl transition text-base text-center">
+					Me contacter par e-mail
+				</a>
+			</div>
+		</div>
+	</section>
+</Layout>

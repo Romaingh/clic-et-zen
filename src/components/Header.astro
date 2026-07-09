@@ -44,6 +44,10 @@ const isCurrent = (path: string) => {
 				Tarifs
 				{isCurrent('/tarifs') && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-clic-medium rounded-full"></span>}
 			</a>
+			<a href={base + "qui-suis-je"} class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/qui-suis-je') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
+				Qui suis-je ?
+				{isCurrent('/qui-suis-je') && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-clic-medium rounded-full"></span>}
+			</a>
 			<a href={base + "faq"} class={`relative py-1 transition duration-200 hover:text-clic-medium ${isCurrent('/faq') ? 'text-clic-medium font-bold' : 'text-slate-200'}`}>
 				FAQ
 				{isCurrent('/faq') && <span class="absolute bottom-0 left-0 w-full h-0.5 bg-clic-medium rounded-full"></span>}
@@ -91,6 +95,9 @@ const isCurrent = (path: string) => {
 			</a>
 			<a href={base + "tarifs"} class={`px-3 py-2 rounded-lg transition ${isCurrent('/tarifs') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
 				Tarifs
+			</a>
+			<a href={base + "qui-suis-je"} class={`px-3 py-2 rounded-lg transition ${isCurrent('/qui-suis-je') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
+				Qui suis-je ?
 			</a>
 			<a href={base + "faq"} class={`px-3 py-2 rounded-lg transition ${isCurrent('/faq') ? 'bg-clic-medium/20 text-white font-bold' : 'text-slate-200 hover:bg-white/5'}`}>
 				FAQ
